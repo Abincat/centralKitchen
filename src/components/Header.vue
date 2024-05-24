@@ -1,5 +1,16 @@
 <script setup>
+    import shoppingCar from './shoppingCar.vue';
+    import {ref} from "vue";
+    
+    let shoppingCarList = ref(false);
 
+    function showShoppingCarList(){
+        shoppingCarList.value = !shoppingCarList.value;
+    }
+    
+    function toggleShoppingCarList(){
+        shoppingCarList.value = !shoppingCarList.value;
+    }
 </script>
 
 <template>
@@ -10,7 +21,7 @@
             </router-link>
             <ul>
                 <li>
-                    <img src="../assets/images/shoppingCart-icon.png" alt="shoppingCart" class="shoppingCart">
+                    <img src="../assets/images/shoppingCart-icon.png" alt="shoppingCart" class="shoppingCart" @click="showShoppingCarList">
                 </li>
                 <li class="loginButton">
                     <img src="../assets/images/member-icon.png" alt="member" class="member">
@@ -18,11 +29,11 @@
                 </li>
             </ul>
         </section>
+        <shoppingCar class="shoppingCar" v-if="shoppingCarList" @toggle="toggleShoppingCarList"></shoppingCar>
     </header>
 </template>
 
 <style scoped>
-
     header{
         width: 100%;
         background-color: white;
@@ -70,5 +81,10 @@
         border-radius: 30px;
         background-color: rgb(213,191,180);
         cursor: pointer;
+    }
+
+    .shoppingCar{
+        position: absolute;
+        right: 0;
     }
 </style>
