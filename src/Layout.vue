@@ -6,9 +6,7 @@
 <template>
     <div>
         <Header></Header>
-        <div>
-            <router-view></router-view>
-        </div>
+        <router-view></router-view>
         <Footer></Footer>
     </div>
 </template>
